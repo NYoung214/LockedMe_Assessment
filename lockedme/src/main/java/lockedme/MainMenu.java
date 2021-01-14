@@ -32,11 +32,14 @@ public class MainMenu {
 				FileOperator.showFiles();
 				break;
 			case "2":
-				//FileOperator.menu();
+				FileOperator.menu();
 				break;
 			case "3":
 				System.out.println("Closing the application...");
 				System.exit(0);
+				break;
+			default:
+				System.out.println("Invalid input. Please enter 1, 2, or 3.");
 				break;
 			}
 		}
