@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class MainMenu {
 	
-	static Scanner input = new Scanner(System.in);
+	public static Scanner input = new Scanner(System.in);
+	public static final String FOLDER = "src/main/tmp/";
 	
 	public static void showMainMenu() {
 		
@@ -14,6 +15,8 @@ public class MainMenu {
 				+ "\nApplication: LockedMe.com"
 				+ "\nDeveloper: Nathaniel Young"
 				+ "\n--------------------------");
+		
+		FileOperator.fillFiles();
 		
 		while(true) {
 			System.out.println("------- Main Menu --------"
@@ -26,7 +29,7 @@ public class MainMenu {
 			
 			switch(choice) {
 			case "1":
-				//FileOperator.showFiles();
+				FileOperator.showFiles();
 				break;
 			case "2":
 				//FileOperator.menu();
