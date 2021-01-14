@@ -36,6 +36,7 @@ public class MainMenu {
 				break;
 			case "3":
 				System.out.println("Closing the application...");
+				input.close();
 				System.exit(0);
 				break;
 			default:
