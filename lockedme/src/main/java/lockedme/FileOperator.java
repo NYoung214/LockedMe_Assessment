@@ -9,9 +9,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class FileOperator {
-	
+	//List to hold all files
 	private static List<File> fileList = new ArrayList<>();
 	
+	//print all files in the list
 	public static void showFiles() {
 		Collections.sort(fileList);
 		printFiles();
@@ -54,7 +55,7 @@ public class FileOperator {
 				addFile();
 				break;
 			case "2":
-				//deleteFile();
+				deleteFile();
 				break;
 			case "3":
 				searchFile();
@@ -99,7 +100,6 @@ public class FileOperator {
 	
 	private static void addFile() {
 		//ask for directory to file
-		//Use [ C:\Users\NecroNyancer\Documents\blank.txt ] for testing
 		System.out.println("Insert file location:");
 		String filePath = MainMenu.input.nextLine();
 		try {
@@ -112,7 +112,6 @@ public class FileOperator {
 				return;				
 			}
 			//if yes then search to see if file already exist in directory	
-			System.out.println(fromPath.getFileName()+" is valid");
 			System.out.println("Searching for "+fromPath.getFileName()+" in directory");
 			if(search(fromPath.getFileName().toString()) == 1){
 				//if file already exists in directory return
@@ -151,6 +150,22 @@ public class FileOperator {
 		return 1;
 	}
 	
+	private static void deleteFile() {
+		//ask for name of file
+		System.out.println("Enter the file name (example: blank.txt):");
+		String fileName = MainMenu.input.nextLine();
+		//search directory for fileName
+		if(search(fileName) == 1) {
+			try {
+				//delete the file if it exists and is not a directory
+				Files.deleteIfExists(Paths.get(MainMenu.FOLDER + fileName));
+				System.out.println("DELETED: "+fileName);
+			}catch(Exception e){
+				System.out.println("COULD NOT DELETE: "+fileName);
+				return;
+			}
+		}
+	}
 	
 	
 }
